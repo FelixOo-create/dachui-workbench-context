@@ -1,0 +1,76 @@
+/*
+ * 时间记录板块样式：Tailwind v4（theme + utilities，不含 preflight，避免影响主应用样式）
+ * 颜色令牌映射到主应用主题变量（--bg / --surface / --border / --text / --accent 等），
+ * 因此时间记录板块随主应用明暗模式与强调色自动适配。
+ */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--text);
+  --color-popover: var(--wb-surface-glass-strong, #131b23);
+  --color-popover-foreground: var(--text);
+  --color-primary: var(--accent);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: var(--surface-2);
+  --color-secondary-foreground: var(--text);
+  --color-muted: var(--surface-2);
+  --color-muted-foreground: var(--text-2);
+  --color-accent: var(--accent-soft);
+  --color-accent-foreground: var(--accent);
+  --color-destructive: var(--danger);
+  --color-destructive-foreground: #ffffff;
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: var(--accent);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+.tm-select-content {
+  border-color: var(--wb-border-strong) !important;
+  background: var(--wb-surface-glass-strong) !important;
+  box-shadow: var(--wb-shadow-float), var(--wb-shadow-inset) !important;
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .tm-select-content {
+    background: var(--wb-surface-glass) !important;
+    backdrop-filter: blur(22px) saturate(112%);
+    -webkit-backdrop-filter: blur(22px) saturate(112%);
+  }
+}
+
+/* 边框默认色（替代 preflight 的 * { border-color }，仅作用于时间记录板块） */
+#timelog-root,
+#timelog-root * {
+  border-color: var(--border);
+}
+
+/* 时间表网格暗线：浅色模式下改为深色细线（深色模式保持原有的白色 3% 线） */
+[data-theme="light"] #timelog-root .border-white\/\[0\.03\] {
+  border-color: rgba(15, 23, 42, 0.06);
+}
+
+/* 左侧活动选中高亮：背景 + 左侧色条 + 文字强调 */
+#timelog-root [data-testid="activity-row"][data-selected="true"] {
+  box-shadow: inset 3px 0 0 0 var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+#timelog-root [data-testid="activity-row"][data-selected="true"] button {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Persisted category colors stay user-owned; soften markers at render time. */
+#timelog-root [class~="rounded-full"][style*="background"] {
+  filter: saturate(0.68) brightness(0.94);
+}

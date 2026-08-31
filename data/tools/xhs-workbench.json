@@ -1,0 +1,20 @@
+{
+  "id": "xhs-workbench",
+  "name": "RedNote工作台",
+  "description": "本地 PPT 模板生产与小红书内容运营工作台",
+  "relativePath": "RedNote工作台",
+  "category": "创作",
+  "tags": ["PPT", "小红书", "Python"],
+  "icon": "notebook-pen",
+  "runtime": {
+    "type": "local-service",
+    "launch": { "type": "bat", "path": "start.bat" },
+    "stop": { "type": "bat", "path": "stop.bat" },
+    "workingDirectory": ".",
+    "healthCheck": { "type": "http", "url": "http://127.0.0.1:5188", "timeout": 3000 },
+    "openUrl": "http://127.0.0.1:5188",
+    "startupTimeout": 60000
+  },
+  "display": { "showInToolCenter": true, "openMode": "embedded", "sortOrder": 50 },
+  "startupPolicy": "manual"
+}

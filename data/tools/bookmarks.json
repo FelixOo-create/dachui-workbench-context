@@ -1,0 +1,24 @@
+{
+  "id": "bookmarks",
+  "name": "网页收藏",
+  "description": "保存、分类和快速打开常用网页",
+  "relativePath": "大锤的工作台\\modules\\bookmarks",
+  "category": "效率",
+  "tags": ["网页收藏", "Node", "本地服务"],
+  "icon": "bookmark",
+  "runtime": {
+    "type": "local-service",
+    "launch": { "type": "cmd", "path": "scripts\\start-bookmarks-service.cmd", "environment": { "DACHUI_WORKBENCH": "1", "PORT": "4175" } },
+    "workingDirectory": ".",
+    "healthCheck": { "type": "http", "url": "http://127.0.0.1:4175/api/health", "timeout": 1800, "expectedServiceId": "dachui-workbench-bookmarks" },
+    "openUrl": "http://127.0.0.1:4175",
+    "startupTimeout": 12000
+  },
+  "display": {
+    "showInToolCenter": false,
+    "openMode": "embedded",
+    "sidebarEntries": [{ "id": "web-collections", "label": "网页收藏", "icon": "bookmark", "path": "/?embed=workbench", "sortOrder": 30 }],
+    "sortOrder": 30
+  },
+  "startupPolicy": "on-workbench-start"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "infinite-canvas",
+  "name": "无限画布",
+  "description": "本地无限画布项目与运行文件",
+  "relativePath": "无限画布",
+  "category": "设计",
+  "tags": ["画布", "创作"],
+  "icon": "panels-top-left",
+  "runtime": { "type": "folder", "launch": { "type": "none" }, "healthCheck": { "type": "none" } },
+  "display": { "showInToolCenter": true, "openMode": "folder", "sortOrder": 90 },
+  "startupPolicy": "manual"
+}
+

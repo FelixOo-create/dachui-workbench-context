@@ -1,0 +1,20 @@
+.h2v2-container { position: relative; width: 100%; height: 100%; min-height: 620px; padding: 14px 18px 18px; }
+.h2v2-container-loading { display: grid; place-content: center; justify-items: center; gap: 9px; color: #87949d; text-align: center; }
+.h2v2-container-loading strong { color: #d6dfe4; font-size: 13px; }
+.h2v2-container-loading span { font-size: 10px; }
+.h2v2-spin { animation: h2v2-spin .9s linear infinite; }
+.h2v2-container.is-saving .habits-v2-root { pointer-events: none; }
+.h2v2-saving-indicator { position: absolute; z-index: 24; top: 18px; right: 22px; height: 30px; padding: 0 10px; display: flex; align-items: center; gap: 7px; color: #bdc9cf; background: rgba(22,29,35,.96); border: 1px solid rgba(199,216,225,.13); border-radius: 8px; box-shadow: 0 12px 30px rgba(0,0,0,.28); font-size: 10px; }
+.h2v2-container-message { position: absolute; z-index: 30; left: 50%; bottom: 28px; max-width: min(560px, calc(100% - 48px)); min-height: 38px; padding: 0 14px; display: flex; align-items: center; justify-content: center; gap: 9px; transform: translateX(-50%); color: #d6e1e6; background: rgba(23,31,37,.97); border: 1px solid rgba(205,221,230,.14); border-radius: 10px; box-shadow: 0 18px 42px rgba(0,0,0,.38); backdrop-filter: blur(20px); font-size: 10px; }
+.h2v2-container-message.is-error { color: #d8aba6; border-color: rgba(191,109,101,.24); }
+.h2v2-container-message button { min-height: 27px; padding: 0 8px; display: flex; align-items: center; gap: 5px; color: #d8e2e7; background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.08); border-radius: 7px; }
+.h2v2-confirm-backdrop { position: fixed; z-index: 60; inset: 0; display: grid; place-items: center; padding: 28px; background: rgba(2,5,7,.62); backdrop-filter: blur(9px); }
+.h2v2-confirm-dialog { width: min(440px, 100%); padding: 21px; display: grid; grid-template-columns: 42px 1fr; gap: 14px; color: #dbe3e8; background: rgba(20,27,33,.97); border: 1px solid rgba(211,226,235,.17); border-radius: 16px; box-shadow: 0 28px 80px rgba(0,0,0,.55), inset 0 1px rgba(255,255,255,.05); }
+.h2v2-confirm-icon { width: 40px; height: 40px; display: grid; place-items: center; color: #d1928c; background: rgba(183,93,85,.11); border: 1px solid rgba(203,121,114,.15); border-radius: 11px; }
+.h2v2-confirm-dialog h2 { margin: 6px 0 0; font-size: 18px; }
+.h2v2-confirm-dialog p { margin: 9px 0 0; color: #7d8992; font-size: 10px; line-height: 1.65; }
+.h2v2-confirm-dialog footer { grid-column: 1 / -1; margin-top: 7px; padding-top: 16px; display: flex; justify-content: flex-end; gap: 8px; border-top: 1px solid rgba(199,216,225,.065); }
+.h2v2-danger-button { min-height: 36px; padding: 0 13px; color: #f1d1ce !important; background: rgba(173,81,74,.19); border: 1px solid rgba(202,111,103,.24) !important; border-radius: 9px; }
+.h2v2-danger-button:hover { background: rgba(188,87,79,.27); }
+@keyframes h2v2-spin { to { transform: rotate(360deg); } }
+@media (max-width: 1500px) { .h2v2-container { padding: 10px 12px 12px; } }

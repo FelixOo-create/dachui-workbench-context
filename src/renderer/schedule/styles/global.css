@@ -1,0 +1,90 @@
+/* 日程模块样式：全部作用域限定在 .schedule-root，避免影响工作台其它页面。
+   主题跟随工作台 html[data-theme]，变量名（--bg/--text 等）为日程模块专用。 */
+
+.schedule-root {
+  --bg: transparent;
+  --surface: var(--surface-primary);
+  --surface-2: var(--surface-secondary);
+  --border: var(--border-primary);
+  --text: var(--text-primary);
+  --text-2: var(--text-secondary);
+  --accent: var(--schedule-accent, var(--accent-primary));
+  --accent-soft: var(--schedule-accent-soft, color-mix(in srgb, var(--accent-primary) 14%, transparent));
+  --ok: var(--success);
+  --warn: var(--warning);
+  --radius: var(--radius-md);
+  --shadow: none;
+  --font: "MiSans", "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  --base-font-size: 14px;
+  --compact: 0;
+
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: var(--font);
+  background: transparent;
+  color: var(--text);
+  font-size: var(--base-font-size);
+  -webkit-font-smoothing: antialiased;
+}
+
+:root[data-theme="dark"] .schedule-root {
+  --bg: transparent;
+  --surface: var(--surface-primary);
+  --surface-2: var(--surface-secondary);
+  --border: var(--border-primary);
+  --text: var(--text-primary);
+  --text-2: var(--text-secondary);
+  --accent: var(--schedule-accent, var(--accent-primary));
+  --accent-soft: var(--schedule-accent-soft, color-mix(in srgb, var(--accent-primary) 14%, transparent));
+  --shadow: none;
+}
+
+.schedule-root *,
+.schedule-root *::before,
+.schedule-root *::after {
+  box-sizing: border-box;
+}
+
+.schedule-root button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+.schedule-root input,
+.schedule-root textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+.schedule-root ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.schedule-root ::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+/* 紧凑模式：减少间距（跟随工作台 compact 设置） */
+:root[data-compact="true"] .schedule-root .sb-item,
+:root[data-compact="true"] .schedule-root .tl-row {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+:root[data-compact="true"] .schedule-root .app-main {
+  padding: 12px 18px;
+}
+
+.schedule-root .app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-2);
+}

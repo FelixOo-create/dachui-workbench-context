@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>大锤网页收藏</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block"><span class="brand-mark">DB</span><div><h1>网页收藏</h1><p id="statusLine">正在读取网页收藏...</p></div></div>
+        <div class="top-actions">
+          <label class="search-box"><span class="sr-only">搜索</span><input id="searchInput" type="search" placeholder="搜索标题、网址、标签" /></label>
+          <div class="view-toggle" aria-label="卡片密度"><button class="active" type="button" data-density="compact">紧凑</button><button type="button" data-density="visual">预览</button></div>
+          <button class="quiet-button" id="profileButton" type="button">浏览器账号</button>
+          <button class="primary-button" id="addButton" type="button">+ 新建收藏</button>
+        </div>
+      </header>
+      <nav class="tag-rail" aria-label="网页收藏视图">
+        <button class="tag-tab active" id="allTagButton" type="button" data-tag="">全部 <strong id="bookmarkCount">0</strong></button>
+        <div class="tag-list" id="tagFilter"></div>
+        <button class="tag-add" id="addTagButton" type="button" title="新增标签">+</button>
+      </nav>
+      <main class="content">
+        <div class="view-heading">
+          <div><p class="eyebrow">当前视图</p><h2 id="viewTitle">全部收藏</h2></div>
+          <div class="utility-actions">
+            <span class="service-state" id="serviceState">检查服务中</span>
+            <button type="button" id="captureMissingButton">补全预览</button>
+            <button type="button" id="importButton">导入</button>
+            <button type="button" id="exportButton">导出</button>
+            <button type="button" id="reloadButton">刷新</button>
+          </div>
+        </div>
+        <section class="bookmark-grid" id="bookmarkGrid" aria-live="polite"></section>
+        <section class="empty-state hidden" id="emptyState"><div class="empty-icon">+</div><h3>这个视图还没有收藏</h3><p>当前标签暂无内容</p><button class="primary-button" id="emptyAddButton" type="button">新建第一个收藏</button></section>
+      </main>
+    </div>
+    <div class="drop-overlay hidden" id="dropOverlay"><div><strong>松开即可收藏</strong><span id="dropTargetText">保存到全部收藏</span></div></div>
+    <section class="modal-backdrop hidden" id="bookmarkModal" role="dialog" aria-modal="true" aria-labelledby="bookmarkModalTitle">
+      <form class="modal-panel" id="bookmarkForm">
+        <div class="modal-head"><div><p class="eyebrow">BOOKMARK</p><h2 id="bookmarkModalTitle">新建收藏</h2></div><button type="button" data-close="bookmarkModal">关闭</button></div>
+        <input id="bookmarkIdInput" type="hidden" />
+        <div class="type-toggle"><label><input type="radio" name="itemType" value="url" checked /><span>网站</span></label><label><input type="radio" name="itemType" value="local" /><span>本地入口</span></label></div>
+        <label class="field"><span id="targetInputLabel">网址</span><input id="urlInput" type="text" placeholder="https://example.com" required /></label>
+        <label class="field hidden" id="localLaunchUrlField"><span>启动后的本地网址</span><input id="localLaunchUrlInput" type="text" placeholder="http://localhost:3000" /></label>
+        <div class="field-grid"><label class="field"><span>标题</span><input id="titleInput" type="text" placeholder="留空则自动获取" /></label><label class="field"><span>标签</span><input id="tagInput" type="text" placeholder="工具 效率" /></label></div>
+        <label class="field"><span>描述</span><textarea id="descriptionInput" rows="3" placeholder="可选"></textarea></label>
+        <fieldset class="profile-targets hidden" id="profileTargets"><legend>指定浏览器账号</legend><div id="profileTargetList"></div></fieldset>
+        <div class="modal-actions"><button class="danger-button hidden" id="deleteBookmarkButton" type="button">删除</button><span></span><button type="button" data-close="bookmarkModal">取消</button><button class="primary-button" id="saveButton" type="submit">保存收藏</button></div>
+      </form>
+    </section>
+    <section class="modal-backdrop hidden" id="profileModal" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
+      <div class="modal-panel profile-panel">
+        <div class="modal-head"><div><p class="eyebrow">BROWSER PROFILES</p><h2 id="profileModalTitle">浏览器账号入口</h2></div><button type="button" data-close="profileModal">关闭</button></div>
+        <div class="profile-list" id="profileList"></div>
+        <form class="profile-form" id="profileForm">
+          <h3>新增入口</h3>
+          <div class="field-grid three"><label class="field"><span>入口名称</span><input id="profileNameInput" type="text" placeholder="小红书主账号" required /></label><label class="field"><span>浏览器</span><select id="browserSelect" required></select></label><label class="field"><span>Profile 目录</span><input id="profileDirectoryInput" type="text" value="Default" placeholder="Default / Profile 1" required /></label></div>
+          <details><summary>高级：自定义用户数据目录</summary><label class="field"><span>User Data 路径</span><input id="userDataDirectoryInput" type="text" placeholder="留空使用浏览器默认目录" /></label></details>
+          <div class="modal-actions"><span></span><button class="primary-button" type="submit">添加入口</button></div>
+        </form>
+      </div>
+    </section>
+    <template id="bookmarkTemplate">
+      <article class="bookmark-card" draggable="true">
+        <button class="preview" type="button" data-action="open"><span class="preview-fallback"></span><span class="site-badge"><img alt="" /><span></span></span></button>
+        <div class="card-body"><div class="card-title-row"><button class="card-title" type="button" data-action="open"></button><button class="more-button" type="button" data-action="edit" title="编辑收藏">...</button></div><p class="card-description"></p><div class="card-tags"></div><div class="profile-launches"></div></div>
+      </article>
+    </template>
+    <input id="importFileInput" class="hidden" type="file" accept="application/json,text/html,.json,.html,.htm" />
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

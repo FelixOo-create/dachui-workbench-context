@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>大锤的工作台 · Home Canvas V2 预览</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 19H7a5 5 0 1 1 1.2-9.85A6 6 0 0 1 19.8 11.7 3.75 3.75 0 0 1 17.5 19Z"/><path d="M12 2v2M4.9 4.9l1.4 1.4M2 12h2"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v9a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-habit" viewBox="0 0 24 24"><path d="m12 3 1.6 4.3L18 9l-4.4 1.7L12 15l-1.6-4.3L6 9l4.4-1.7Z"/><path d="m18.5 14 .8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8Z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a3 3 0 0 1 3-3h13v17H7a3 3 0 0 0-3 3Z"/><path d="M4 5v17M8 6h8"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="3"/><path d="M8 21h8M12 17v4"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6Z"/><path d="M14 2v5h5M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-app" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.6v-.2h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+    <symbol id="i-grip" viewBox="0 0 24 24"><circle cx="9" cy="6" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="m14 4 6 6-3 1-4 4-1 5-2-2-4-4-2-2 5-1 4-4Z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <div class="canvas-backdrop" aria-hidden="true"><span></span><span></span><span></span></div>
+
+    <header class="top-rail">
+      <div class="rail-cluster context-cluster">
+        <div class="weather-chip"><span class="status-dot status-green"></span><svg><use href="#i-cloud"/></svg><strong>上海</strong><span>22° 多云</span></div>
+        <div class="date-chip"><svg><use href="#i-calendar"/></svg><strong>8月30日</strong><span>星期日</span><time>15:24</time></div>
+      </div>
+
+      <nav class="scene-switcher" aria-label="内部场景导航">
+        <button class="scene-button active"><svg><use href="#i-home"/></svg><span>今日</span></button>
+        <button class="scene-button"><svg><use href="#i-check"/></svg><span>待办</span></button>
+        <button class="scene-button"><svg><use href="#i-clock"/></svg><span>时间块</span></button>
+        <button class="scene-button"><svg><use href="#i-habit"/></svg><span>习惯</span></button>
+        <button class="scene-button"><svg><use href="#i-book"/></svg><span>记录册</span></button>
+      </nav>
+
+      <div class="rail-cluster home-controls">
+        <label class="screen-select"><svg><use href="#i-monitor"/></svg><select aria-label="主屏幕"><option>主屏幕 · 1920×1080</option><option>显示器 2</option></select></label>
+        <button class="rail-button" data-action="add"><svg><use href="#i-plus"/></svg><span>添加组件</span></button>
+        <button class="rail-button" data-action="edit"><svg><use href="#i-layout"/></svg><span>编辑布局</span></button>
+        <button class="rail-icon" title="显示或隐藏组件"><svg><use href="#i-eye"/></svg></button>
+      </div>
+    </header>
+
+    <main class="home-canvas">
+      <section class="dashboard-grid" aria-label="今日工作台">
+        <article class="canvas-card task-card" data-widget="tasks">
+          <div class="edit-toolbar"><button><svg><use href="#i-grip"/></svg></button><span>今日待办</span><button><svg><use href="#i-more"/></svg></button></div>
+          <span class="resize-handle top-left"></span><span class="resize-handle top-right"></span><span class="resize-handle bottom-left"></span><span class="resize-handle bottom-right"></span>
+          <header class="card-header">
+            <div><span class="eyebrow">TODAY · 4 项</span><h2>把今天收拢成一页</h2></div>
+            <button class="icon-button" aria-label="更多"><svg><use href="#i-more"/></svg></button>
+          </header>
+          <div class="quick-add"><svg><use href="#i-plus"/></svg><input aria-label="快速添加任务" placeholder="快速记录一项待办…"/><kbd>Enter</kbd></div>
+          <div class="task-list">
+            <button class="task-row completed"><span class="task-check"><svg><use href="#i-check"/></svg></span><span class="task-copy"><strong>整理本周工作台迭代结果</strong><small>已完成 · 工作</small></span><span class="task-time">09:30</span></button>
+            <button class="task-row"><span class="task-check"></span><span class="task-copy"><strong>确认待办首页视觉方向</strong><small><span class="mini-dot amber"></span>高优先级 · 设计</small></span><span class="task-time">11:00</span></button>
+            <button class="task-row"><span class="task-check"></span><span class="task-copy"><strong>整理桌面常用项目入口</strong><small>个人项目 · 2 个子任务</small></span><span class="task-time">14:00</span></button>
+            <button class="task-row"><span class="task-check"></span><span class="task-copy"><strong>完成 25 分钟专注时段</strong><small>今日 · 专注</small></span><span class="task-time muted">待安排</span></button>
+          </div>
+          <footer class="card-footer"><span><span class="status-dot status-green"></span>1 项已完成</span><button>进入完整待办 <svg><use href="#i-chevron"/></svg></button></footer>
+        </article>
+
+        <article class="canvas-card calendar-card" data-widget="calendar">
+          <span class="resize-handle bottom-right"></span>
+          <header class="compact-header"><div><span class="eyebrow">AUGUST</span><h3>8 月 30 日</h3></div><span class="weekday">周日</span></header>
+          <div class="week-strip"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span><i>24</i><i>25</i><i>26</i><i>27</i><i>28</i><i>29</i><i class="today">30</i></div>
+          <div class="calendar-agenda"><div><time>10:00</time><span><b class="event-line amber"></b>视觉基准复核</span></div><div><time>15:30</time><span><b class="event-line green"></b>版本整理</span></div></div>
+          <button class="text-button">打开月历 <svg><use href="#i-chevron"/></svg></button>
+        </article>
+
+        <article class="canvas-card focus-card" data-widget="focus">
+          <span class="resize-handle bottom-right"></span>
+          <header class="compact-header"><div><span class="eyebrow">FOCUS</span><h3>专注计时</h3></div><span class="status-pill amber">准备</span></header>
+          <div class="focus-content"><div class="focus-ring"><div><strong>25:00</strong><span>专注时段</span></div></div><button class="play-button"><svg><use href="#i-play"/></svg>开始专注</button></div>
+          <div class="ambient-glow amber-glow"></div>
+        </article>
+
+        <article class="canvas-card weather-card" data-widget="weather">
+          <span class="resize-handle bottom-right"></span>
+          <header class="compact-header"><div><span class="eyebrow">WEATHER</span><h3>上海 · 徐汇</h3></div><button class="icon-button small" title="天气设置" data-action="settings"><svg><use href="#i-settings"/></svg></button></header>
+          <div class="weather-main"><svg><use href="#i-cloud"/></svg><strong>22°</strong><span>多云<br><small>体感 23°</small></span></div>
+          <div class="weather-stats"><span>湿度 68%</span><span>微风 2 级</span><span>18–25°</span></div>
+          <div class="ambient-glow cool-glow"></div>
+        </article>
+
+        <article class="canvas-card plan-card" data-widget="plan">
+          <span class="resize-handle bottom-right"></span>
+          <header class="compact-header"><div><span class="eyebrow">NEXT</span><h3>接下来</h3></div><span class="count-badge">3</span></header>
+          <div class="timeline"><div><time>16:00</time><span><b></b>快速回顾</span></div><div><time>18:30</time><span><b class="green"></b>习惯打卡</span></div><div><time>20:00</time><span><b class="amber"></b>阅读记录</span></div></div>
+        </article>
+
+        <article class="canvas-card desktop-box selected-widget" data-widget="desktop-box">
+          <div class="edit-toolbar"><button><svg><use href="#i-grip"/></svg></button><span>桌面盒子</span><button><svg><use href="#i-more"/></svg></button></div>
+          <span class="resize-handle top-left"></span><span class="resize-handle top-right"></span><span class="resize-handle bottom-left"></span><span class="resize-handle bottom-right"></span>
+          <header class="card-header desktop-header">
+            <div><span class="eyebrow">DESKTOP BOX</span><h2>常用入口都在这里</h2><p>只镜像入口，不移动原文件</p></div>
+            <div class="sync-state"><span class="status-dot status-green"></span>已同步 12 项</div>
+          </header>
+          <section class="favorites-strip"><div class="section-heading"><span>收藏栏</span><button>管理</button></div><div class="favorite-items"><button><span class="fav-icon coral">R</span><span>RedNote</span></button><button><span class="fav-icon steel">T</span><span>Tooler</span></button><button><span class="fav-icon green">C</span><span>Check</span></button><button><span class="fav-icon amber">∞</span><span>无限画布</span></button></div></section>
+          <section class="app-section"><div class="section-heading"><span>应用快捷方式</span><small>8 项</small></div><div class="app-grid"><button><span class="app-icon word">W</span><span>Word</span></button><button><span class="app-icon ppt">P</span><span>PowerPoint</span></button><button><span class="app-icon excel">X</span><span>Excel</span></button><button><span class="app-icon code">&lt;/&gt;</span><span>VS Code</span></button><button><span class="app-icon edge">e</span><span>Edge</span></button><button><span class="app-icon notes">N</span><span>笔记</span></button><button><span class="app-icon folder"><svg><use href="#i-folder"/></svg></span><span>项目</span></button><button><span class="app-icon more"><svg><use href="#i-more"/></svg></span><span>更多</span></button></div></section>
+          <section class="project-section"><div class="section-heading"><span>项目与文件夹</span><button><svg><use href="#i-plus"/></svg>固定入口</button></div><div class="project-grid"><button class="project-tile"><span class="folder-mark work"><svg><use href="#i-folder"/></svg></span><span><strong>工作</strong><small>6 个入口</small></span><svg class="arrow"><use href="#i-chevron"/></svg></button><button class="project-tile"><span class="folder-mark design"><svg><use href="#i-folder"/></svg></span><span><strong>设计</strong><small>4 个入口</small></span><svg class="arrow"><use href="#i-chevron"/></svg></button><button class="project-tile"><span class="folder-mark temp"><svg><use href="#i-file"/></svg></span><span><strong>临时</strong><small>2 个文件</small></span><svg class="arrow"><use href="#i-chevron"/></svg></button></div></section>
+          <footer class="box-footer"><span>上次同步 15:18</span><button><svg><use href="#i-pin"/></svg>置顶入口将出现在底部工作条</button></footer>
+        </article>
+      </section>
+    </main>
+
+    <aside class="editor-panel" aria-label="首页编辑设置">
+      <header><div><span class="eyebrow">HOME CANVAS</span><h2>编辑首页</h2></div><button class="icon-button" data-action="close-editor"><span>×</span></button></header>
+      <section class="settings-block"><label>显示器</label><div class="inset-field"><svg><use href="#i-monitor"/></svg><select><option>主屏幕 · 1920×1080</option><option>显示器 2 · 2560×1440</option></select></div><small>窗口使用显示器工作区，不遮挡任务栏</small></section>
+      <section class="settings-block"><div class="block-title"><label>布局预设</label><button class="link-button">撤销</button></div><div class="preset-grid"><button class="preset active"><i class="preset-map smart"></i><span>智能填充</span></button><button class="preset"><i class="preset-map split"></i><span>左右二分</span></button><button class="preset"><i class="preset-map triple"></i><span>横向三分</span></button><button class="preset"><i class="preset-map hero"></i><span>主次布局</span></button></div></section>
+      <section class="settings-block"><div class="block-title"><label>天气城市</label><span class="increment">新增 IPC</span></div><div class="inset-field"><svg><use href="#i-cloud"/></svg><input value="上海市 徐汇区" aria-label="天气城市"/><button>保存</button></div><small>正式实现：保存城市并触发 WeatherService 刷新</small></section>
+      <section class="settings-block"><div class="block-title"><label>组件</label><span>5 个显示中</span></div><div class="component-list"><button><span><svg><use href="#i-check"/></svg>今日待办</span><i class="switch on"></i></button><button><span><svg><use href="#i-calendar"/></svg>日历</span><i class="switch on"></i></button><button><span><svg><use href="#i-clock"/></svg>专注计时</span><i class="switch on"></i></button><button><span><svg><use href="#i-cloud"/></svg>天气</span><i class="switch on"></i></button><button><span><svg><use href="#i-layout"/></svg>桌面盒子</span><i class="switch on"></i></button></div></section>
+      <button class="primary-action" data-action="add"><svg><use href="#i-plus"/></svg>添加组件</button>
+      <button class="secondary-action" data-action="close-editor">完成编辑</button>
+      <p class="engine-note"><span class="status-dot amber"></span>正式自由布局建议使用 Gridstack，实现拖拽、缩放、碰撞与持久化。</p>
+    </aside>
+
+    <div class="component-modal" role="dialog" aria-label="添加组件">
+      <div class="modal-card"><header><div><span class="eyebrow">COMPONENT LIBRARY</span><h2>添加首页组件</h2></div><button class="icon-button" data-action="close-modal"><span>×</span></button></header><div class="modal-grid"><button><svg><use href="#i-check"/></svg><span><strong>今日待办</strong><small>快速查看与完成</small></span><b>已添加</b></button><button><svg><use href="#i-calendar"/></svg><span><strong>日历</strong><small>日期与近期日程</small></span><b>已添加</b></button><button><svg><use href="#i-clock"/></svg><span><strong>专注计时</strong><small>主进程维护计时</small></span><b>已添加</b></button><button><svg><use href="#i-cloud"/></svg><span><strong>天气</strong><small>城市天气摘要</small></span><b>已添加</b></button><button><svg><use href="#i-layout"/></svg><span><strong>桌面盒子</strong><small>安全镜像入口</small></span><b>已添加</b></button></div></div>
+    </div>
+
+    <footer class="tool-dock">
+      <div class="dock-group dock-start"><button class="dock-menu"><span class="dock-icon"><svg><use href="#i-app"/></svg></span><span>全部工具</span></button></div>
+      <div class="dock-separator"></div>
+      <div class="dock-group dock-tools"><button class="dock-item active"><span class="dock-icon bookmark">B</span><span>书签</span><i class="run-dot"></i></button><button class="dock-item"><span class="dock-icon rednote">R</span><span>RedNote</span></button><button class="dock-item"><span class="dock-icon tooler">T</span><span>Tooler</span></button><button class="dock-item"><span class="dock-icon check">C</span><span>Check</span></button></div>
+      <div class="dock-separator"></div>
+      <div class="dock-group dock-files"><button class="dock-item"><span class="dock-icon file"><svg><use href="#i-file"/></svg></span><span>迭代计划</span></button><button class="dock-item"><span class="dock-icon folder"><svg><use href="#i-folder"/></svg></span><span>项目</span></button></div>
+      <div class="dock-spacer"></div>
+      <div class="dock-group dock-controls"><button class="dock-compact" data-action="edit"><svg><use href="#i-layout"/></svg><span>布局</span></button><button class="dock-compact" data-action="settings"><svg><use href="#i-settings"/></svg><span>设置</span></button><time><strong>15:24</strong><span>8/30 周日</span></time></div>
+    </footer>
+  </div>
+  <script src="prototype.js"></script>
+</body>
+</html>

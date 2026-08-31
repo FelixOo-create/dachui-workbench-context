@@ -1,0 +1,12 @@
+{
+  "id": "tooler",
+  "name": "Tooler 工坊",
+  "description": "PowerPoint VSTO 插件与模板工具集合",
+  "relativePath": "Tooler",
+  "category": "开发",
+  "tags": ["PowerPoint", "VSTO", "模板"],
+  "icon": "blocks",
+  "runtime": { "type": "folder", "launch": { "type": "none" }, "healthCheck": { "type": "none" } },
+  "display": { "showInToolCenter": true, "openMode": "folder", "sortOrder": 110 },
+  "startupPolicy": "manual"
+}

@@ -1,0 +1,38 @@
+:root { color-scheme: dark; background: #090e12; font-family: MiSans, "Microsoft YaHei UI", "Segoe UI", sans-serif; }
+* { box-sizing: border-box; }
+html, body, #root { width: 100%; min-width: 100%; height: 100%; margin: 0; }
+body { overflow: hidden; }
+.h2v2-icon-preview { width: 100%; height: 100%; padding: 58px 58px 44px; color: #dce5ea; background:
+  radial-gradient(circle at 19% 12%, rgba(102,132,149,.14), transparent 29%),
+  radial-gradient(circle at 80% 79%, rgba(74,102,92,.09), transparent 31%),
+  radial-gradient(circle at 1px 1px, rgba(175,198,210,.08) 1px, transparent 1.2px),
+  linear-gradient(145deg, #0a1014, #090d10 54%, #0c1216); background-size: auto, auto, 24px 24px, auto; }
+.h2v2-icon-preview > header { max-width: 900px; }
+.h2v2-icon-preview > header span { color: #91a7b5; font-size: 11px; font-weight: 760; letter-spacing: .14em; }
+.h2v2-icon-preview h1 { margin: 9px 0 0; color: #edf3f6; font-size: 30px; letter-spacing: -.035em; }
+.h2v2-icon-preview > header p { margin: 9px 0 0; color: #84929b; font-size: 12px; }
+.h2v2-icon-options { margin-top: 31px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.h2v2-icon-option.habits-v2-root { width: auto; height: auto; min-width: 0; min-height: 0; padding: 0; display: block; overflow: hidden; background: linear-gradient(145deg, rgba(22,29,35,.88), rgba(18,24,29,.82)); border: 1px solid rgba(199,216,225,.12); border-radius: 17px; box-shadow: inset 0 1px rgba(255,255,255,.035), 0 20px 52px rgba(0,0,0,.22); backdrop-filter: blur(19px); }
+.h2v2-icon-option > header { min-height: 82px; padding: 17px 19px; display: flex; flex-direction: column; justify-content: center; border-bottom: 1px solid rgba(199,216,225,.07); }
+.h2v2-icon-option > header b { color: #e2e9ed; font-size: 16px; }
+.h2v2-icon-option > header small { margin-top: 7px; color: #7e8c95; font-size: 10px; line-height: 1.45; }
+.h2v2-icon-option .h2v2-habit-list { padding: 10px 14px 13px; overflow: visible; }
+.h2v2-icon-option .h2v2-habit-row { grid-template-columns: 27px 39px minmax(0, 1fr) 62px 30px; padding-inline: 7px; }
+.h2v2-icon-option .h2v2-row-action { opacity: .42; }
+.h2v2-icon-option > footer { min-height: 47px; padding: 0 18px; display: flex; align-items: center; color: #83919a; background: rgba(0,0,0,.12); border-top: 1px solid rgba(199,216,225,.06); font-size: 10px; }
+.h2v2-icon-option[data-icon-style="soft"] .h2v2-habit-symbol { width: 36px; height: 36px; color: var(--habit-accent); background: color-mix(in srgb, var(--habit-accent) 11%, transparent); border: 1px solid color-mix(in srgb, var(--habit-accent) 20%, transparent); border-radius: 10px; }
+.h2v2-icon-option[data-icon-style="line"] .h2v2-habit-symbol { width: 36px; height: 36px; color: color-mix(in srgb, var(--habit-accent) 82%, #dce5ea); background: radial-gradient(circle, color-mix(in srgb, var(--habit-accent) 10%, transparent) 0 28%, transparent 68%); border-color: transparent; border-radius: 50%; }
+.h2v2-icon-option[data-icon-style="line"] .h2v2-habit-symbol svg { filter: drop-shadow(0 0 7px color-mix(in srgb, var(--habit-accent) 24%, transparent)); }
+.h2v2-icon-option[data-icon-style="badge"] .h2v2-habit-symbol { position: relative; width: 36px; height: 36px; color: color-mix(in srgb, var(--habit-accent) 70%, #b9c6cd); background: rgba(7,11,14,.34); border: 1px solid rgba(194,211,220,.15); border-radius: 9px; box-shadow: inset 0 1px rgba(255,255,255,.025); }
+.h2v2-icon-option[data-icon-style="badge"] .h2v2-habit-symbol::before { content: ""; position: absolute; left: 3px; width: 2px; height: 16px; background: var(--habit-accent); border-radius: 2px; opacity: .72; }
+.h2v2-icon-preview > aside { width: fit-content; margin: 25px auto 0; padding: 10px 14px; display: flex; align-items: center; gap: 8px; color: #91a0a9; background: rgba(16,23,28,.82); border: 1px solid rgba(199,216,225,.10); border-radius: 10px; font-size: 10px; }
+.h2v2-icon-preview > aside svg { color: #84bea0; }
+@media (max-width: 1500px) {
+  .h2v2-icon-preview { padding: 34px 28px 28px; }
+  .h2v2-icon-preview h1 { font-size: 25px; }
+  .h2v2-icon-options { margin-top: 20px; gap: 12px; }
+  .h2v2-icon-option > header { min-height: 68px; padding: 12px 14px; }
+  .h2v2-icon-option .h2v2-habit-row { grid-template-columns: 27px 39px minmax(0, 1fr) 54px 30px; gap: 7px; }
+  .h2v2-icon-option .h2v2-streak { font-size: 9px; }
+  .h2v2-icon-preview > aside { margin-top: 16px; }
+}

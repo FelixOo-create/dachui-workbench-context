@@ -1,0 +1,35 @@
+import type { ForgeConfig } from "@electron-forge/shared-types";
+import { MakerSquirrel } from "@electron-forge/maker-squirrel";
+import { MakerZIP } from "@electron-forge/maker-zip";
+import { VitePlugin } from "@electron-forge/plugin-vite";
+import path from "node:path";
+
+const config: ForgeConfig = {
+  packagerConfig: {
+    asar: true,
+    extraResource: ["data", "native"],
+    executableName: "DachuiWorkbench",
+    icon: path.resolve("resources", "app-icon.ico"),
+    electronZipDir: path.resolve("tooling", "electron-cache"),
+  },
+  rebuildConfig: {},
+  makers: [
+    new MakerSquirrel({
+      name: "DachuiWorkbench",
+      setupExe: "DachuiWorkbench-Setup.exe",
+      setupIcon: path.resolve("resources", "app-icon.ico"),
+    }),
+    new MakerZIP({}, ["win32"]),
+  ],
+  plugins: [
+    new VitePlugin({
+      build: [
+        { entry: "src/main/main.ts", config: "vite.main.config.ts", target: "main" },
+        { entry: "src/preload/preload.ts", config: "vite.preload.config.ts", target: "preload" },
+      ],
+      renderer: [{ name: "main_window", config: "vite.renderer.config.ts" }],
+    }),
+  ],
+};
+
+export default config;

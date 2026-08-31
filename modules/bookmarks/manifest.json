@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "大锤书签工作台",
+  "description": "标签驱动的本地个人书签工作台，支持拖入收藏与浏览器 Profile 打开。",
+  "version": "0.5.0",
+  "chrome_url_overrides": {
+    "newtab": "public/index.html"
+  },
+  "permissions": [
+    "clipboardRead",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "http://localhost:4173/*",
+    "http://127.0.0.1:4173/*"
+  ]
+}

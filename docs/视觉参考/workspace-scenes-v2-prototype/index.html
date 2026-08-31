@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>大锤的工作台 · 场景规划 V2</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="workspace-shell">
+    <div class="ambient-canvas" aria-hidden="true"></div>
+    <header class="top-rail">
+      <div class="context-group">
+        <span class="context-pill"><i class="status-dot green"></i><b>上海</b><span>22° 多云</span></span>
+        <span class="context-pill"><i data-icon="calendar"></i><b>8月30日</b><span>星期日</span><time>15:24</time></span>
+      </div>
+      <nav class="scene-nav" aria-label="内部场景导航">
+        <button data-scene="today"><i data-icon="home"></i><span>今日</span></button>
+        <button data-scene="todo"><i data-icon="check"></i><span>待办</span></button>
+        <button data-scene="timelog"><i data-icon="clock"></i><span>时间块</span></button>
+        <button data-scene="habits"><i data-icon="spark"></i><span>习惯</span></button>
+        <button data-scene="memories"><i data-icon="book"></i><span>记录册</span></button>
+        <button class="disabled" disabled><i data-icon="canvas"></i><span>画布</span></button>
+      </nav>
+      <div class="top-actions">
+        <button class="icon-control" title="搜索"><i data-icon="search"></i></button>
+        <button class="icon-control" title="通知"><i data-icon="bell"></i><span class="notify-dot"></span></button>
+        <span class="preview-mark">SCENE V2</span>
+      </div>
+    </header>
+
+    <main id="scene-root" class="scene-stage" aria-live="polite"></main>
+
+    <footer class="tool-dock">
+      <button class="dock-start"><span class="dock-icon"><i data-icon="grid"></i></span><span>全部工具</span></button>
+      <span class="dock-divider"></span>
+      <div class="dock-items">
+        <button class="dock-item active"><span class="dock-icon bookmark">B</span><span>书签</span><i class="run-dot"></i></button>
+        <button class="dock-item"><span class="dock-icon rednote">R</span><span>RedNote</span></button>
+        <button class="dock-item"><span class="dock-icon tooler">T</span><span>Tooler</span></button>
+        <button class="dock-item"><span class="dock-icon check">C</span><span>Check</span></button>
+        <button class="dock-item"><span class="dock-icon"><i data-icon="file"></i></span><span>迭代计划</span></button>
+        <button class="dock-item"><span class="dock-icon"><i data-icon="folder"></i></span><span>项目</span></button>
+      </div>
+      <span class="dock-spacer"></span>
+      <div class="dock-controls">
+        <button><i data-icon="layout"></i><span>布局</span></button>
+        <button data-scene="tools"><i data-icon="tool"></i><span>工具</span></button>
+        <button data-scene="settings"><i data-icon="settings"></i><span>设置</span></button>
+        <time><b>15:24</b><span>8/30 周日</span></time>
+      </div>
+    </footer>
+  </div>
+  <script src="prototype.js"></script>
+</body>
+</html>

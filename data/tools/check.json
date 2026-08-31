@@ -1,0 +1,17 @@
+{
+  "id": "check",
+  "name": "Check",
+  "description": "PPT QA/交付核对工具，对比基准稿和待核对稿并生成报告",
+  "relativePath": "Check",
+  "category": "PPT",
+  "tags": ["PPT", "QA", "交付核对"],
+  "icon": "clipboard-check",
+  "runtime": {
+    "type": "command",
+    "launch": { "type": "bat", "path": "核对.bat" },
+    "workingDirectory": ".",
+    "healthCheck": { "type": "none" }
+  },
+  "display": { "showInToolCenter": true, "openMode": "external", "sortOrder": 120 },
+  "startupPolicy": "manual"
+}

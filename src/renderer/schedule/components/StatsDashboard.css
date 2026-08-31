@@ -1,0 +1,57 @@
+/* 统计板块：待办 / 时间块 / 习惯 各自的统计 */
+.stats-dashboard {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stats-dash-tabs {
+  display: flex;
+  gap: 3px;
+  width: fit-content;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+
+.stats-dash-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: calc(var(--radius) - 2px);
+  background: transparent;
+  border: 1px solid transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  transition: all 0.12s;
+}
+
+.stats-dash-tab:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.stats-dash-tab.is-active {
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 24%, var(--border));
+  color: var(--accent);
+}
+
+.stats-dash-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.stats-dash-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
